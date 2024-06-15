@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather</title>
+  {% load static %}
+  <link rel="stylesheet" href = "{% static 'style.css' %}"/>
+
+</head>
+
+<body>
+
+  <div class="container">
+    
+      <div class="header"><h2 >Weather app</h2></div>
+      
+      <form action="" method="post" >
+        {% csrf_token %}
+        <div class="searchbar">
+          <input class="search" type="text"  name="city" placeholder="City" required="required">
+          <button class="go" type="submit">Go</button>
+        </div>  
+      <form>
+        
+      <div>
+        {% if data.country_code %}
+        <div id = "cityname">
+          <h1>{{city}}</h1>
+          <h3>Country code : {{data.country_code}}</h3>
+          <h5>Coordinate : {{data.coordinate}}</h5>
+        </div>
+                
+        <div id="temp-div">{{data.temp}}</div>
+
+        <div id="weather-info">
+          <h3>{{data.description}}</h3>
+          <h5>Pressure : {{data.pressure}}</h5>
+          <h5>Humidity : {{data.humidity}}</h5>
+        </div>
+                
+        {% endif %}
+      </div>
+
+  </div>
+
+
+
+</body>
+
+</html>
